@@ -1,5 +1,5 @@
 {
-  "name": "importy",
+  "name": "@momsfriendlydevco/es6",
   "version": "0.0.0",
   "description": "Various ES6 utilities",
   "main": "lib/es6.js",
@@ -9,15 +9,27 @@
     "test": "mocha"
   },
   "keywords": [
-    "import",
     "es6",
+    "import",
     "module"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MomsFriendlyDevCo/ES6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MomsFriendlyDevCo/ES6/issues"
+  },
+  "homepage": "https://github.com/MomsFriendlyDevCo/ES6#readme",
   "author": "Matt Carter <m@ttcarter.com>",
   "license": "MIT",
   "engineStrict": true,
   "engines": {
     "node": ">=16.14.0"
+  },
+  "exports": {
+    ".": "./lib/es6.js",
+    "./*": "./lib/*.js"
   },
   "imports": {
     "#es6/*": "./lib/*.js"
