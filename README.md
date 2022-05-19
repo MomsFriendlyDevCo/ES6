@@ -41,11 +41,13 @@ Options are:
 | `root`        | `String`                  | Auto*           | Root path of the project to resolve modules from                  |
 | `sort`        | `Function`                | `ES6.sortPaths` | Function to use to sort evaluated glob paths per run              |
 | `sortOptions` | `Object`                  | `{}`            | Options passed to the sort function                               |
+| `sortWhen`    | `String`                  | `perGlob`       | When to sort. ENUM: `perGlob` or `preImport`                      |
+| `uniq`        | `Boolean`                 | `true`          | Include each eventual path only once, avoiding duplicates         |
 
 
 **Notes:**
 * `imports` can be a single string glob, array of globs or a single function / array of functions which (async eventually) returns the strings / globs to include
-*
+* `sortWhen` determines when the sorting algorithm should operate. `perGlob` sorts each glob evaluation, meaning that the order of paths is preserved except globs that "expand" into multiple files. `preImport` Expands all globs first then sorts all files which could potentially destroy any preferred order
 
 
 ```javascript

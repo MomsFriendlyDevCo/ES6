@@ -53,4 +53,23 @@ describe('sortPaths()', ()=> {
 		expect(sortPaths([...paths].reverse())).to.deep.equal(paths);
 	});
 
+
+	it('should remove duplicates', ()=> {
+		let paths = [
+			'foo',
+			'bar',
+			'baz',
+			'foo',
+			'bar',
+			'baz',
+			'baz',
+			'foo',
+			'foo',
+		];
+		let expectPaths = ['bar', 'baz', 'foo'];
+
+		// Expect sorted paths to be in the same order
+		expect(sortPaths([...paths].reverse())).to.deep.equal(expectPaths);
+	});
+
 });
