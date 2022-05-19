@@ -65,17 +65,29 @@ Returns a new array of sorted paths.
 
 Sorts an array of paths in a logical, "human" order.
 
-For example the following paths are returned:
+Options are:
 
-```
-./lib/a.js
-./lib/a.a.js // Expects to extend 'a'
-./lib/a.b.js // Expects to extend 'a'
-./lib/a.c.js // Expects to extend 'a'
+| Option          | Type       | Default  | Description                                           |
+|-----------------|------------|----------|-------------------------------------------------------|
+| `stripDir`      | `Boolean`  | `false`  | Whether to ignore the path component when sorting     |
+| `stripExt`      | `Boolean`  | `true`   | Whether to ignore the file extension when sorting     |
+| `rewritePath`   | `Function` | See code | The path rewrite function (uses the `strip*` options) |
+| `locale`        | `String`   | `'en'`   | The locale region when sorting                        |
+| `localeOptions` | `Object`   | See code | Locale options when sorting                           |
+| `uniq`          | `Boolean`  | `true`   | Whether to de-duplicate the calculated paths          |
 
-./lib/z.js
-./lib/z-1.js
-./lib/z-2.js
-./lib/z-3.js
-./lib/z-10.js // Numerics are correctly evaluated in order
+
+```javascript
+sortPaths([
+	'./lib/a.js',
+	'./lib/a.a.js', // Expects to extend 'a'
+	'./lib/a.b.js',
+	'./lib/a.c.js',
+	'
+	'./lib/z.js',
+	'./lib/z-1.js',
+	'./lib/z-2.js',
+	'./lib/z-3.js',
+	'./lib/z-10.js', // Numerics are correctly evaluated in order
+]); //= The above "ideal" order
 ```
