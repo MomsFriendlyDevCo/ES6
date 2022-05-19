@@ -36,4 +36,21 @@ describe('sortPaths()', ()=> {
 		expect(sortPaths([...paths].reverse())).to.deep.equal(paths);
 	});
 
+	it('should sort paths in a logical order #3', ()=> {
+		let paths = [
+			'./lib/a.js',
+			'./lib/a.a.js',
+			'./lib/a.b.js',
+			'./lib/a.c.js',
+			'./lib/z.js',
+			'./lib/z-1.js',
+			'./lib/z-2.js',
+			'./lib/z-3.js',
+			'./lib/z-10.js',
+		];
+
+		// Expect sorted paths to be in the same order
+		expect(sortPaths([...paths].reverse())).to.deep.equal(paths);
+	});
+
 });
