@@ -1,0 +1,46 @@
+{
+  "name": "importy",
+  "version": "0.0.0",
+  "description": "Various ES6 utilities",
+  "main": "lib/es6.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint lib test",
+    "test": "mocha"
+  },
+  "keywords": [
+    "import",
+    "es6",
+    "module"
+  ],
+  "author": "Matt Carter <m@ttcarter.com>",
+  "license": "MIT",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16.14.0"
+  },
+  "imports": {
+    "#es6/*": "./lib/*.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "env": {
+      "es6": true,
+      "mocha": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    }
+  },
+  "dependencies": {
+    "debug": "^4.3.4",
+    "globby": "^13.1.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "eslint": "^8.15.0",
+    "mocha": "^10.0.0"
+  }
+}
