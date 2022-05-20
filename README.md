@@ -12,14 +12,42 @@ All methods are importable directly or via a default object:
 // Import everything as es6
 import es6 from '@momsfriendlydevco';
 es6.importAll(...);
+es6.$FUNC(...);
 
 // Import individual functions
-import {importAll, sortPaths} from '@momsfriendlydevco/es6';
+import {dirName, importAll, sortPaths} from '@momsfriendlydevco/es6';
+dirName(...);
 importAll(...);
+sortPaths(...);
 
 // Direct import via path
 import importAll from '@momsfriendlydevco/es6/importAll';
 importAll(...);
+```
+
+
+dirname(options)
+----------------
+Returns a string.
+Fetch the directory of the calling function.
+
+| Option                  | Type      | Default | Description                                                                     |
+|-------------------------|-----------|---------|---------------------------------------------------------------------------------|
+| `stackDepth`            | `Number`  | `1`     | How far down the call stack to search for a path                                |
+| `translateFileProtocol` | `Boolean` | `true`  | Whether to replace the `file://` prefix with a simple on-disk path              |
+| `includeFilename`       | `Boolean` | `false` | Whether to include the actual filename, if false only the directory is returned |
+
+
+**Notes:**
+* `stackDepth` is the number of functions in the stack to look upwards from the actual dirName worker. The default of `1` means look to the callee. If you wish to look higher up the stack increase this value.
+
+
+```javascript
+import {dirName} from '@momsfriendlydevco/es6';
+
+let myPath = dirName(); //=~ the directory the saved script file exists in
+
+let myFile = dirName({includeFilename: true}); //=~ Full path including file
 ```
 
 

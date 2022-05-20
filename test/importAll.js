@@ -4,7 +4,7 @@ import importAll from '#es6/importAll';
 describe('importAll()', ()=> {
 
 	it('should import file globs in a logical order', async ()=>
-		expect(await importAll('./test/data/sort-*.js'))
+		expect(await importAll('./data/sort-*.js'))
 			.to.deep.equal([
 				{default: 'a'},
 				{default: 'a.a'},
@@ -17,9 +17,9 @@ describe('importAll()', ()=> {
 
 	it('should import file globs once (using uniq)', async ()=>
 		expect(await importAll([
-			'./test/data/sort-*.js',
-			'./test/data/sort-*.js',
-			'./test/data/sort-*.js',
+			'./data/sort-*.js',
+			'./data/sort-*.js',
+			'./data/sort-*.js',
 		]))
 			.to.deep.equal([
 				{default: 'a'},
@@ -33,9 +33,9 @@ describe('importAll()', ()=> {
 
 	it('should import file globs multiple times (using !uniq)', async ()=>
 		expect(await importAll([
-			'./test/data/sort-b*.js',
-			'./test/data/sort-b*.js',
-			'./test/data/sort-b*.js',
+			'./data/sort-b*.js',
+			'./data/sort-b*.js',
+			'./data/sort-b*.js',
 		], {uniq: false}))
 			.to.deep.equal([
 				{default: 'b'},
@@ -46,10 +46,10 @@ describe('importAll()', ()=> {
 
 	it('should preserve path set order', async ()=>
 		expect(await importAll([
-			'./test/data/sort-b*.js',
-			'./test/data/sort-c*.js',
-			'./test/data/sort-a*.js',
-			'./test/data/sort-*.js',
+			'./data/sort-b*.js',
+			'./data/sort-c*.js',
+			'./data/sort-a*.js',
+			'./data/sort-*.js',
 		]))
 			.to.deep.equal([
 				{default: 'b'},
