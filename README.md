@@ -28,11 +28,13 @@ importAll(...);
 
 dirname(options)
 ----------------
+If called as a string the value of `options.relativeTo` is assumed. e.g. `dirname('..')` gets the parent directory.
 Returns a string.
 Fetch the directory of the calling function.
 
 | Option                  | Type      | Default | Description                                                                     |
 |-------------------------|-----------|---------|---------------------------------------------------------------------------------|
+| `relativeTo`            | `String`  |         | Compute the dirname + the relative path (e.g. `'..'` to get the parent dir)     |
 | `stackDepth`            | `Number`  | `1`     | How far down the call stack to search for a path                                |
 | `translateFileProtocol` | `Boolean` | `true`  | Whether to replace the `file://` prefix with a simple on-disk path              |
 | `includeFilename`       | `Boolean` | `false` | Whether to include the actual filename, if false only the directory is returned |
