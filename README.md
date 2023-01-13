@@ -53,6 +53,22 @@ let myFile = dirName({includeFilename: true}); //=~ Full path including file
 ```
 
 
+discover(options)
+-----------------
+Find other ES6 compliant NPM modules by various query options.
+
+Options are:
+
+| Option   | Type                  | Default        | Description                                                                                                                                |
+|----------|-----------------------|----------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `filter` | `RegExp` / `Function` |                | Optional filter function to query modules. If a function this is called as `(npmName, npmAttrs)`, if a RegExp its used to match the npm.id |
+| `local`  | `Boolean`             | `false`        | Query local repositories                                                                                                                   |
+| `global` | `Boolean`             | `true`         | Query global repositories                                                                                                                  |
+| `want`   | `String`              | `'collection'` | Desired output type. ENUM: `'collection'`, `'object'`, `'set'`
+
+Returns a list of modules as an array (depending on `want`)
+
+
 importAll(paths, options)
 -------------------------
 Returns a promise.
