@@ -27,10 +27,12 @@
   "engines": {
     "node": ">=16.14.0"
   },
+  "main": "lib/cjs/index.cjs",
+  "module": "lib/esm/index.js",
   "exports": {
     ".": {
       "require": "./lib/cjs/index.cjs",
-      "default": "./lib/esm/esm.js"
+      "default": "./lib/esm/index.js"
     },
     "./*": "./lib/esm/*.js"
   },
