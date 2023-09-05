@@ -4,7 +4,7 @@
   "description": "Various ES6 utilities",
   "type": "module",
   "scripts": {
-    "lint": "eslint lib test",
+    "lint": "eslint .",
     "test": "mocha"
   },
   "keywords": [
