@@ -2,6 +2,11 @@
 ======================
 Various ES6 utilities.
 
+* [dirname](#dirname) - Fetch the directory path of the current file
+* [discover()](#discover) - Find other ES6 compliant NPM modules by various query options
+* [importAll()](#importall) - Import various ES6 modules using a glob
+* [sortPaths()](#sortpaths) - Sort input paths in a logical way
+
 
 API
 ===
@@ -23,6 +28,22 @@ sortPaths(...);
 // Direct import via path
 import importAll from '@momsfriendlydevco/es6/importAll';
 importAll(...);
+```
+
+
+backport(path, extract)
+-----------------------
+Convert an ESM module into CJS, optionally extracting a subkey.
+Returns a promise.
+
+```javascript
+const {backport} = require('@momsfriendlydevco/es6');
+
+// Import an ESM module into CJS
+let {execa} = await backport('execa');
+
+// Just extract one key
+let {execa} = await backport('execa', 'execaSync'));
 ```
 
 
@@ -71,8 +92,8 @@ Returns a list of modules as an array (depending on `want`)
 
 importAll(paths, options)
 -------------------------
-Returns a promise.
 Import various ES6 modules using a glob.
+Returns a promise.
 This module uses the `sortPaths` API to return paths in a logical order (i.e. `./lib/a.js` is included before `./lib/a.a.js`).
 
 
@@ -109,7 +130,7 @@ await importAll([
 
 sortPaths(paths, options)
 -------------------------
-Returns a new array of sorted paths.
+Sort input paths in a logical way.
 
 Sorts an array of paths in a logical, "human" order.
 

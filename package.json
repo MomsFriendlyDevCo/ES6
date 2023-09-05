@@ -2,7 +2,6 @@
   "name": "@momsfriendlydevco/es6",
   "version": "1.2.1",
   "description": "Various ES6 utilities",
-  "main": "lib/es6.js",
   "type": "module",
   "scripts": {
     "lint": "eslint lib test",
@@ -11,7 +10,8 @@
   "keywords": [
     "es6",
     "import",
-    "module"
+    "module",
+    "backport"
   ],
   "repository": {
     "type": "git",
