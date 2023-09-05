@@ -52,7 +52,8 @@
   "dependencies": {
     "debug": "^4.3.4",
     "execa": "^7.1.1",
-    "globby": "^13.1.4"
+    "globby": "^13.1.4",
+    "parent-module": "^2.0.0"
   },
   "devDependencies": {
     "@momsfriendlydevco/eslint-config": "^1.0.7",
