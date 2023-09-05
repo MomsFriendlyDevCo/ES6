@@ -38,7 +38,7 @@
     "#es6/*": "./lib/esm/*.js"
   },
   "eslintConfig": {
-    "extends": "eslint:recommended",
+    "extends": "@momsfriendlydevco",
     "env": {
       "es6": true,
       "mocha": true,
@@ -55,6 +55,7 @@
     "globby": "^13.1.4"
   },
   "devDependencies": {
+    "@momsfriendlydevco/eslint-config": "^1.0.7",
     "chai": "^4.3.7",
     "eslint": "^8.38.0",
     "mocha": "^10.2.0"
