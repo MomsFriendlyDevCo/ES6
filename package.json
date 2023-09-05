@@ -28,11 +28,14 @@
     "node": ">=16.14.0"
   },
   "exports": {
-    ".": "./lib/es6.js",
-    "./*": "./lib/*.js"
+    ".": {
+      "require": "./lib/cjs/index.cjs",
+      "default": "./lib/esm/esm.js"
+    },
+    "./*": "./lib/esm/*.js"
   },
   "imports": {
-    "#es6/*": "./lib/*.js"
+    "#es6/*": "./lib/esm/*.js"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
