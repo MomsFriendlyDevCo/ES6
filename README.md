@@ -47,9 +47,9 @@ let {execa} = await backport('execa', 'execaSync'));
 ```
 
 
-dirname(options)
+dirName(options)
 ----------------
-If called as a string the value of `options.relativeTo` is assumed. e.g. `dirname('..')` gets the parent directory.
+If called as a string the value of `options.relativeTo` is assumed. e.g. `dirName('..')` gets the parent directory.
 Returns a string.
 Fetch the directory of the calling function.
 
@@ -99,22 +99,25 @@ This module uses the `sortPaths` API to return paths in a logical order (i.e. `.
 
 Options are:
 
-| Option        | Type                      | Default         | Description                                                       |
-|---------------|---------------------------|-----------------|-------------------------------------------------------------------|
-| `imports`     | Various*                  | `[]`            | Alternate way to specify the paths input, see notes               |
-| `glob`        | `Boolean`                 | `true`          | Support globbing in paths                                         |
-| `method`      | `String`, `Array<String>` |                 | If specified run the method or array of methods after each import |
-| `args`        | `Array`                   | `[]`            | Arguments to pass to the `method` on run                          |
-| `root`        | `String`                  | Auto*           | Root path of the project to resolve modules from                  |
-| `sort`        | `Function`                | `ES6.sortPaths` | Function to use to sort evaluated glob paths per run              |
-| `sortOptions` | `Object`                  | `{}`            | Options passed to the sort function                               |
-| `sortWhen`    | `String`                  | `perGlob`       | When to sort. ENUM: `perGlob` or `preImport`                      |
-| `uniq`        | `Boolean`                 | `true`          | Include each eventual path only once, avoiding duplicates         |
+| Option           | Type                      | Default         | Description                                                                |
+|------------------|---------------------------|-----------------|----------------------------------------------------------------------------|
+| `imports`        | Various*                  | `[]`            | Alternate way to specify the paths input, see notes                        |
+| `includePath`    | `Boolean`                 | `false`         | Include an additonal `{path:String}` property per output                   |
+| `glob`           | `Boolean`                 | `true`          | Support globbing in paths                                                  |
+| `method`         | `String`, `Array<String>` |                 | If specified run the method or array of methods after each import          |
+| `methodPerCycle` | `Boolean`                 | `false`         | Run each method in an outer loop rather than importing all methods at once |
+| `args`           | `Array`                   | `[]`            | Arguments to pass to the `method` on run                                   |
+| `root`           | `String`                  | Auto*           | Root path of the project to resolve modules from                           |
+| `sort`           | `Function`                | `ES6.sortPaths` | Function to use to sort evaluated glob paths per run                       |
+| `sortOptions`    | `Object`                  | `{}`            | Options passed to the sort function                                        |
+| `sortWhen`       | `String`                  | `perGlob`       | When to sort. ENUM: `perGlob` or `preImport`                               |
+| `uniq`           | `Boolean`                 | `true`          | Include each eventual path only once, avoiding duplicates                  |
 
 
 **Notes:**
 * `imports` can be a single string glob, array of globs or a single function / array of functions which (async eventually) returns the strings / globs to include
 * `sortWhen` determines when the sorting algorithm should operate. `perGlob` sorts each glob evaluation, meaning that the order of paths is preserved except globs that "expand" into multiple files. `preImport` Expands all globs first then sorts all files which could potentially destroy any preferred order
+* `methodPerCycle` can be used to run imports in a logical order (e.g. all `init()` imports then all `default()` imports). All Async methods are resolved in order when used.
 
 
 ```javascript
